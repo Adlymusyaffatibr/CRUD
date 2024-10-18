@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
     <h1 class="h3 mb-4">Edit Buku</h1>

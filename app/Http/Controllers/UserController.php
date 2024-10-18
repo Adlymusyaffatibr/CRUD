@@ -22,7 +22,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string',
         ]);
 
         User::create([
@@ -31,12 +31,12 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Akun berhasil ditambahkan.');
+        return redirect()->route('user.index')->with('success', 'Akun berhasil ditambahkan.');
     }
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
@@ -48,12 +48,12 @@ class UserController extends Controller
 
         $user->update($request->only('name', 'email'));
 
-        return redirect()->route('users.index')->with('success', 'Akun berhasil diperbarui.');
+        return redirect()->route('user.index')->with('success', 'Akun berhasil diperbarui.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'Akun berhasil dihapus.');
+        return redirect()->route('user.index')->with('success', 'Akun berhasil dihapus.');
     }
 }

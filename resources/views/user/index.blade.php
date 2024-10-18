@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
 <div class="container">
@@ -26,8 +26,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a href="{{ route('users.edit', $user) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('user.edit', $user) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('user.destroy', $user) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm">Hapus</button>

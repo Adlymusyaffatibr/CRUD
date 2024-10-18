@@ -18,3 +18,6 @@ use App\Http\Controllers\UserController;
 Route::get('/', [BukuController::class, 'index']);
 Route::resource('buku', BukuController::class);
 Route::resource('user', UserController::class);
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
